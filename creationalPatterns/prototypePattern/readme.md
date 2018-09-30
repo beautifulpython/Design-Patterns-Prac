@@ -1,11 +1,9 @@
-工厂模式：
+原型模式：
     1.background
-	  创建对象时不会对客户端暴露创建逻辑。
-	  定义一个创建对象的接口（该接口是对所有需求对象的一个抽象），让其子类自己决定实例化哪一个接口子类，工厂模式使其创建过程延迟到子类进行。
+	  创建对象开销较大时，为了提升性能。提前创建所有对象并存在Map里边，如果需要重复创建对象，则从map取一个克隆出来。
 	2.implement principle
-	  a.define abstract class/interface which describe what these Instance can do.---->abstract class/interface 
-	  b.define these class and implement a. via overwrite func
-	  c.define factory class to build Instance depending on the situation.
+	  a.define abstract class/interface that implements Cloneable and overwrite clone()
+	  b.define cachetype class contains a hashTable which store all Intance maybe need.
     3.applicable scene and optimize
 	  Actually,all class or interface should be public.
 	  if you want to add a class to describe another requirement,you need add your class and modify the factory class.
