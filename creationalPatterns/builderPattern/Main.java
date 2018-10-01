@@ -90,8 +90,8 @@ class InstanceCache{
             Elements rec = factory.getBurger("VegBurger");
             map.put("chickenBurger",bur);
             map.put("VegBurger",rec);
-            Elements coke = factory.getColor("coke");
-            Elements fenta = factory.getColor("fenta");
+            Elements coke = factory.getBeverage("coke");
+            Elements fenta = factory.getBeverage("fenta");
             map.put("coke",coke);
             map.put("fenta",fenta);
         }
@@ -183,7 +183,7 @@ class AbstractFactory{
     public Burgers getBurger(String s){
         return new BurgerFactory().getBurgerInstance(s);
     }
-    public Beverages getColor(String c){
+    public Beverages getBeverage(String c){
         return new BeverageFactory().getBeverageInstance(c);
     }
 }
