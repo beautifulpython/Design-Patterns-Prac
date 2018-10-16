@@ -1,4 +1,4 @@
-
+/*
 //1.静态代理
 import java.util.*;
 interface Star {
@@ -71,8 +71,8 @@ public class Main{
 }
 	
 }
+*/
 
-/*
 //2.动态代理
 //import java.lang.reflect.InvocationHandler;
 //import java.lang.reflect.Method;
@@ -88,20 +88,24 @@ public class Main{
     //代理类
     Star proxy = (Star) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Star.class}, handler);
     proxy.sing();//调用代理类的唱歌方法：其实调用的是真实角色的唱歌方法
+	proxy.confer();
 }
  
  }
 //动态代理处理器
 class StarHandler implements InvocationHandler{
-  
+  private Star realStar;
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object object = null;
-        System.out.println("真实角色调用之前的处理.....");
+        
         if (method.getName().equals("sing")) {
-            object = method.invoke(realStar, args);//激活调用的方法   
+			System.out.println("真实角色方法处理.....");
+            object = method.invoke(realStar, args);//激活调用的方法  
         }
-        System.out.println("真实角色调用之后的处理.....");
+        else{
+			System.out.println("需要进行代理的方法处理.....");
+		}
         return object;
     }
     //通过构造器来初始化真实角色
@@ -142,5 +146,5 @@ class RealStar implements Star{
     }
 }
 
-*/
+
 
